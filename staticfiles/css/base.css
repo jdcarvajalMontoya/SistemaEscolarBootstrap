@@ -19,10 +19,7 @@ body.no-aside .layout-content {
   left: 0 !important;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  background-image: url('../img/aula.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 111111;
+  background-image: '../img/aula.jpg' !important;
 }
 
 .layout-navbar {

@@ -1,0 +1,82 @@
+.school-navbar {
+  height: 64px;
+  background: #fff;
+  border-bottom: 1px solid #e6e9ef;
+  box-shadow: 0 1px 6px 0 rgba(25,71,161,0.03);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  z-index: 100;
+}
+
+.school-navbar-brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+  margin-bottom: 0;
+  color: #1274e7 !important;
+  text-shadow: 0 1px 0 #fff;
+  transition: color 0.2s;
+}
+
+.school-navbar-link {
+  color: #1571c8 !important;
+  font-weight: 500;
+  font-size: 1.06rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 0.7rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  background: #f4faff;
+}
+.school-navbar-link:hover,
+.school-navbar-link:focus {
+  background: #ddeffd;
+  color: #035485 !important;
+  text-decoration: none;
+}
+
+.school-navbar-user-btn {
+  border: 1.5px solid #b6e0fe;
+  background: #f4faff;
+  color: #1274e7;
+  font-weight: 500;
+  transition: box-shadow 0.18s;
+  min-height: 44px;
+}
+.school-navbar-user-btn:hover,
+.school-navbar-user-btn:focus {
+  background: #eaf4fb;
+  border-color: #1274e7;
+  color: #035485;
+  box-shadow: 0 2px 8px 0 rgba(30,100,180,0.08);
+}
+.school-navbar-user-btn img {
+  border-radius: 50%;
+  border: 1.5px solid #e5e9f0;
+  object-fit: cover;
+}
+
+.school-navbar-login-btn,
+.school-navbar-register-btn {
+  font-weight: 500;
+  border-radius: 0.5rem;
+}
+.school-navbar-login-btn {
+  padding: 0.38rem 1.25rem;
+  font-size: 1.01rem;
+}
+.school-navbar-register-btn {
+  padding: 0.38rem 1.05rem;
+  font-size: 1.01rem;
+}
+
+@media (max-width: 600px) {
+  .school-navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 0.7rem 0.2rem;
+  }
+  .school-navbar-brand {
+    font-size: 1.25rem;
+  }
+}

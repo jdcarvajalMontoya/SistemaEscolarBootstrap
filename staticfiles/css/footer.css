@@ -1,0 +1,18 @@
+.school-footer {
+  background: #fff;
+  border-top: 1px solid #e6e9ef;
+  padding: 1.1rem 0 1rem 0;
+  text-align: center;
+  font-size: 0.98rem;
+  color: #5e6a7a;
+  letter-spacing: 0.01em;
+  width: 100%;
+  margin-top: auto;
+}
+
+@media (max-width: 600px) {
+  .school-footer {
+    font-size: 0.9rem;
+    padding: 0.8rem 0 0.7rem 0;
+  }
+}

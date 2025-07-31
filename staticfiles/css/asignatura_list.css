@@ -1,0 +1,39 @@
+.btn-pastel-blue {
+  background: #eaf4fb !important;
+  color: #0574c7 !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid #b6e0fe !important;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500 !important;
+  padding: 0.35rem 0.9rem !important;
+  font-size: 1rem !important;
+}
+.btn-pastel-blue:hover, .btn-pastel-blue:focus {
+  background: #cbe7fb !important;
+  color: #035485 !important;
+  text-decoration: none !important;
+}
+.btn-pastel-red {
+  background: #fdeaea !important;
+  color: #d71b3b !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid #ffd6da !important;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500 !important;
+  padding: 0.35rem 0.9rem !important;
+  font-size: 1rem !important;
+}
+.btn-pastel-red:hover, .btn-pastel-red:focus {
+  background: #fbbfc1 !important;
+  color: #98001b !important;
+  text-decoration: none !important;
+}
+.btn-pastel-blue, .btn-pastel-red {
+  margin-bottom: 0 !important;
+}
+/* Para que los botones nunca se bajen a la siguiente línea */
+td.text-end.pe-4,
+.acciones-col {
+  white-space: nowrap;
+  min-width: 210px;
+}

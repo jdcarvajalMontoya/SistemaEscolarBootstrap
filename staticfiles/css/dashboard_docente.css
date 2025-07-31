@@ -1,0 +1,12 @@
+/* dashboard_docente.css */
+.dashboard-docente-aside {
+    background: #f2f8fd;
+    border-right: 1px solid #e1eaf4;
+    min-height: 100vh;
+}
+
+.dashboard-docente-content {
+    background: #fff;
+    padding: 2rem;
+    min-height: 100vh;
+}

@@ -1,0 +1,38 @@
+.aside-docente {
+  background: none;
+}
+
+.aside-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #1571c8 !important;
+  background: #f4faff;
+  border: none;
+  border-radius: 0.65rem;
+  font-size: 0.96rem;
+  font-weight: 500;
+  padding: 0.47rem 0.85rem;
+  margin-bottom: 0.35rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  box-shadow: none;
+}
+.aside-link:hover, .aside-link:focus {
+  background: #ddeffd;
+  color: #035485 !important;
+  text-decoration: none;
+  box-shadow: 0 2px 6px 0 rgba(30,100,180,0.05);
+}
+.aside-link i {
+  font-size: 1.25em;
+  vertical-align: middle;
+}
+
+.aside-logout {
+  font-size: 0.96rem !important;
+  border-radius: 0.65rem !important;
+}
+.aside-logout i {
+  font-size: 1.25em;
+}

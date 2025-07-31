@@ -1,0 +1,18 @@
+.panel-coordinador-welcome {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.panel-coordinador-title {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #1467b3;
+  letter-spacing: 0.5px;
+}
+
+.panel-coordinador-description {
+  margin-top: 1.1rem;
+  color: #555f77;
+  font-size: 1.14rem;
+  font-weight: 500;
+}

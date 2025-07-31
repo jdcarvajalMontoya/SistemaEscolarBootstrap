@@ -1,0 +1,12 @@
+.dashboard-panel-content {
+  background: #f5f8fb;
+  min-height: 100vh;
+  padding: 2rem 0 0 0;
+  transition: background 0.2s;
+}
+
+@media (max-width: 900px) {
+  .dashboard-panel-content {
+    padding: 1rem 0 0 0;
+  }
+}

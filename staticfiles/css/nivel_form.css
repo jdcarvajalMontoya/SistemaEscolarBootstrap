@@ -1,0 +1,30 @@
+.btn-pastel-blue {
+  background: #eaf4fb;
+  color: #0574c7;
+  border-radius: 0.5rem;
+  border: 1px solid #b6e0fe;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+  padding: 0.35rem 0.9rem;
+  font-size: 1rem;
+}
+.btn-pastel-blue:hover, .btn-pastel-blue:focus {
+  background: #cbe7fb;
+  color: #035485;
+  text-decoration: none;
+}
+.btn-pastel-red {
+  background: #fdeaea;
+  color: #d71b3b;
+  border-radius: 0.5rem;
+  border: 1px solid #ffd6da;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+  padding: 0.35rem 0.9rem;
+  font-size: 1rem;
+}
+.btn-pastel-red:hover, .btn-pastel-red:focus {
+  background: #fbbfc1;
+  color: #98001b;
+  text-decoration: none;
+}

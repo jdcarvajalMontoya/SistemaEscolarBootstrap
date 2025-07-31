@@ -1,0 +1,113 @@
+.dashboard-flex-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.dashboard-sidebar {
+  width: 260px;
+  background: #1467b3;
+  color: #fff;
+  min-height: 100vh;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  box-shadow: 2px 0 16px 0 rgba(20,103,179,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.dashboard-sidebar-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 2.4rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.dashboard-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.dashboard-nav-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  color: #e8f3fa;
+  text-decoration: none;
+  padding: 0.62rem 1rem;
+  border-radius: 0.55rem;
+  font-size: 1.08rem;
+  font-weight: 500;
+  transition: background 0.17s, color 0.17s;
+}
+
+.dashboard-nav-link:hover,
+.dashboard-nav-link:focus {
+  background: #1977d3;
+  color: #fff;
+  text-decoration: none;
+}
+
+.dashboard-nav-pending {
+  position: relative;
+}
+
+.dashboard-badge-pending {
+  background: #e23d44;
+  color: #fff;
+  font-size: 0.87rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-left: 8px;
+  box-shadow: 0 2px 8px rgba(226,61,68,0.10);
+}
+
+.dashboard-nav-logout {
+  color: #ffe7e7 !important;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  background: transparent;
+}
+
+.dashboard-nav-logout:hover,
+.dashboard-nav-logout:focus {
+  background: #c62828;
+  color: #fff !important;
+}
+
+.dashboard-main-content {
+  flex: 1 1 0%;
+  background: #f6fafd;
+  padding: 2.7rem 2.4rem 2rem 2.4rem;
+  min-height: 100vh;
+}
+
+@media (max-width: 900px) {
+  .dashboard-flex-layout {
+    flex-direction: column;
+  }
+  .dashboard-sidebar {
+    width: 100%;
+    min-height: unset;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+  .dashboard-sidebar-title {
+    display: none;
+  }
+  .dashboard-nav {
+    flex-direction: row;
+    gap: 0.2rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .dashboard-main-content {
+    padding: 1rem 0.6rem 1rem 0.6rem;
+  }
+}

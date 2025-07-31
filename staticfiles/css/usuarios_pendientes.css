@@ -1,0 +1,22 @@
+.card {
+  border-radius: 1.2rem !important;
+}
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #f3f3f3;
+}
+.btn-success.btn-sm {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  padding: 0.35rem 0.9rem !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 1px 4px rgba(8,96,168,.06);
+}
+.btn-success.btn-sm i {
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+.toast {
+  font-size: 1rem;
+  border-radius: 1rem;
+}
