@@ -4,6 +4,12 @@
 
 {% block title %}Datos Básicos del Docente{% endblock %}
 
+{% if form_basico.non_field_errors %}
+    <div class="text-red-500 text-sm">
+        {{ form_basico.non_field_errors }}
+    </div>
+{% endif %}
+
 {% block panel_content %}
 <link rel="stylesheet" href="{% static 'css/datos_basicos_docente.css' %}">
 <div class="datos-basicos-container">
@@ -43,6 +49,11 @@
           {{ form_identificacion.municipio_identificacion.label_tag }}
           {{ form_identificacion.municipio_identificacion|add_class:"form-select" }}
           {{ form_identificacion.municipio_identificacion.errors }}
+        </div>
+          <div class="col-12 mt-3">
+          {{ form_basico.estado_civil.label_tag }}
+          {{ form_basico.estado_civil|add_class:"form-select" }}
+          {{ form_basico.estado_civil.errors }}
         </div>
       </div>
 

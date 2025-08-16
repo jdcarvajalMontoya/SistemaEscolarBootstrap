@@ -33,6 +33,11 @@ def docente_datos_basicos_view(request):
         form_identificacion = IdentificacionForm(request.POST, instance=usuario)
         form_identidad = IdentidadForm(request.POST, instance=perfil)
         form_basico = DatosBasicosDocenteForm(request.POST, instance=hoja_de_vida, initial=initial_basico)
+        
+        print("POST:", request.POST)
+        print("CLEANED DATA:", form_basico.cleaned_data if form_basico.is_valid() else None)
+        print("ERRORES:", form_basico.errors)
+        
         if all([form_identificacion.is_valid(), form_identidad.is_valid(), form_basico.is_valid()]):
             usuario = form_identificacion.save()
             form_identidad.save()
