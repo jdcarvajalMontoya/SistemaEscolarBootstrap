@@ -1,0 +1,290 @@
+version: '3.9'
+
+services:
+  # ========================================
+  # BASE DE DATOS POSTGRESQL
+  # ========================================
+  db:
+    image: postgres:15
+    container_name: sistema_escolar_db
+    environment:
+      POSTGRES_DB: sistema_escolar
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - microservicios_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ========================================
+  # MICROSERVICIO DE AUTENTICACIÓN
+  # ========================================
+  auth_service:
+    build: 
+      context: ../auth_service
+      dockerfile: Dockerfile
+    container_name: auth_service
+    volumes:
+      - ../auth_service:/app
+      - auth_static:/app/staticfiles
+    ports:
+      - "8001:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:admin123@db:5432/sistema_escolar
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-microservicios-2024-secret-key-very-long
+      - POSTGRES_DB=sistema_escolar
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    networks:
+      - microservicios_network
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000
+
+  # ========================================
+  # MICROSERVICIO DE USUARIOS
+  # ========================================
+  usuarios_service:
+    build: 
+      context: ../usuarios_service
+      dockerfile: Dockerfile
+    container_name: usuarios_service
+    volumes:
+      - ../usuarios_service:/app
+      - usuarios_static:/app/staticfiles
+    ports:
+      - "8002:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:admin123@db:5432/sistema_escolar
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-microservicios-2024-secret-key-very-long
+      - POSTGRES_DB=sistema_escolar
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    networks:
+      - microservicios_network
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000
+
+  # ========================================
+  # MICROSERVICIO DE CURRÍCULO
+  # ========================================
+  curriculum_service:
+    build: 
+      context: ../curriculum_service
+      dockerfile: Dockerfile
+    container_name: curriculum_service
+    volumes:
+      - ../curriculum_service:/app
+      - curriculum_static:/app/staticfiles
+    ports:
+      - "8003:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:admin123@db:5432/sistema_escolar
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-microservicios-2024-secret-key-very-long
+      - POSTGRES_DB=sistema_escolar
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    networks:
+      - microservicios_network
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000
+
+  # ========================================
+  # MICROSERVICIO DE GRUPOS
+  # ========================================
+  grupos_service:
+    build: 
+      context: ../grupos_service
+      dockerfile: Dockerfile
+    container_name: grupos_service
+    volumes:
+      - ../grupos_service:/app
+      - grupos_static:/app/staticfiles
+    ports:
+      - "8004:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:admin123@db:5432/sistema_escolar
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-microservicios-2024-secret-key-very-long
+      - POSTGRES_DB=sistema_escolar
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    networks:
+      - microservicios_network
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000
+
+  # ========================================
+  # MICROSERVICIO DE AULAS VIRTUALES
+  # ========================================
+  aulas_virtuales_service:
+    build: 
+      context: ../aulas_virtuales_service
+      dockerfile: Dockerfile
+    container_name: aulas_virtuales_service
+    volumes:
+      - ../aulas_virtuales_service:/app
+      - aulas_static:/app/staticfiles
+      - aulas_media:/app/media
+    ports:
+      - "8005:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:admin123@db:5432/sistema_escolar
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-microservicios-2024-secret-key-very-long
+      - POSTGRES_DB=sistema_escolar
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    networks:
+      - microservicios_network
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000
+
+  # ========================================
+  # MICROSERVICIO DE HOJA DE VIDA DOCENTE
+  # ========================================
+  docente_hojavida_service:
+    build: 
+      context: ../docente_hojavida_service
+      dockerfile: Dockerfile
+    container_name: docente_hojavida_service
+    volumes:
+      - ../docente_hojavida_service:/app
+      - hoja_vida_static:/app/staticfiles
+      - hoja_vida_media:/app/media
+    ports:
+      - "8006:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:admin123@db:5432/sistema_escolar
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-microservicios-2024-secret-key-very-long
+      - POSTGRES_DB=sistema_escolar
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    networks:
+      - microservicios_network
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000
+
+  # ========================================
+  # MICROSERVICIO DE PARAMÉTRICOS
+  # ========================================
+  parametricos_service:
+    build: 
+      context: ../parametricos_service
+      dockerfile: Dockerfile
+    container_name: parametricos_service
+    volumes:
+      - ../parametricos_service:/app
+      - parametricos_static:/app/staticfiles
+    ports:
+      - "8007:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:admin123@db:5432/sistema_escolar
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-microservicios-2024-secret-key-very-long
+      - POSTGRES_DB=sistema_escolar
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    networks:
+      - microservicios_network
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000
+
+  # ========================================
+  # PGADMIN (OPCIONAL - PARA ADMINISTRAR BD)
+  # ========================================
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@sistemaescolar.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    networks:
+      - microservicios_network
+    restart: unless-stopped
+
+# ========================================
+# VOLÚMENES PARA PERSISTENCIA DE DATOS
+# ========================================
+volumes:
+  pgdata:
+    driver: local
+  auth_static:
+    driver: local
+  usuarios_static:
+    driver: local
+  curriculum_static:
+    driver: local
+  grupos_static:
+    driver: local
+  aulas_static:
+    driver: local
+  aulas_media:
+    driver: local
+  hoja_vida_static:
+    driver: local
+  hoja_vida_media:
+    driver: local
+  parametricos_static:
+    driver: local
+
+# ========================================
+# RED DOCKER PARA COMUNICACIÓN ENTRE SERVICIOS
+# ========================================
+networks:
+  microservicios_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
