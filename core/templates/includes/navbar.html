@@ -1,7 +1,10 @@
 {% load static %}
 <div class="container-fluid school-navbar d-flex align-items-center justify-content-between">
   <div class="d-flex align-items-center">
-    <a href="{% url 'inicio' %}" class="navbar-brand fw-bold text-primary fs-4 mb-0 school-navbar-brand">Sistema Escolar</a>
+    <a href="{% url 'inicio' %}" class="navbar-brand fw-bold text-primary fs-4 mb-0 school-navbar-brand">
+      <img src="{% static 'img/LogoEscolar.png' %}" alt="Academix" class="navbar-logo me-2" width="115" height="120">
+      Academix
+    </a>
     <a href="{% url 'bienvenida' %}" class="school-navbar-link ms-3 d-flex align-items-center">
       <i class="bi bi-house-door-fill me-1"></i> Inicio
     </a>

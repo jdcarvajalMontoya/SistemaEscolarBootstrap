@@ -8,6 +8,11 @@
   z-index: 100;
 }
 
+.navbar-logo {
+  object-fit: contain;
+  border-radius: 4px;
+}
+
 .school-navbar-brand {
   font-weight: 700;
   font-size: 1.6rem;
@@ -16,6 +21,8 @@
   color: #1274e7 !important;
   text-shadow: 0 1px 0 #fff;
   transition: color 0.2s;
+  display: flex;
+  align-items: center;
 }
 
 .school-navbar-link {
@@ -78,5 +85,9 @@
   }
   .school-navbar-brand {
     font-size: 1.25rem;
+  }
+  .navbar-logo {
+    width: 24px;
+    height: 24px;
   }
 }

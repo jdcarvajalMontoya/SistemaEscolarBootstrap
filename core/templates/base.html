@@ -3,7 +3,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>{% block title %}Sistema Escolar{% endblock %}</title>
+  <title>{% block title %}Academix - Sistema Escolar{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -30,13 +30,13 @@
   {% endif %}
 
   <!-- CONTENIDO CENTRAL -->
-  <main class="layout-content"style="background-image: url('{% static 'img/Fondo.jpg' %}') !important;background-repeat: no-repeat;background-size: 100%;">
+  <main class="layout-content"style="background-image: url('{% static 'img/fondoSistema.png' %}')">
     {% block content %}{% endblock %}
   </main>
 
   <!-- FOOTER FIJO -->
   <footer class="layout-footer">
-    © 2025 Sistema Escolar. Todos los derechos reservados. | Contacto: colegio@example.edu.co
+    © 2025 Academix - Sistema Escolar. Todos los derechos reservados. | Contacto: info@academix.edu.co
   </footer>
 
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
