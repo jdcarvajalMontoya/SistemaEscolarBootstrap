@@ -1,55 +1,112 @@
-.datos-basicos-container {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 0 8px;
-}
+/* =========================================================
+   DATOS BÁSICOS DOCENTE — Glassmorphism Verde Mejorado
+   ========================================================= */
+
 .datos-basicos-card {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 2px 16px 0 rgba(38,60,81,.08);
-  padding: 36px 34px 28px 34px;
+  border-radius: 20px !important;
+  border: 1px solid rgba(150, 172, 96, 0.4) !important;
+  background: rgba(40, 62, 6, 0.35) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow:
+    0 8px 32px rgba(40, 62, 6, 0.4),
+    inset 0 1px 0 rgba(150, 172, 96, 0.2),
+    0 0 0 1px rgba(150, 172, 96, 0.15) !important;
+  animation: fadeInUp 0.8s ease-out !important;
+  padding: 2rem !important;
 }
+
+/* Títulos */
 .datos-basicos-title {
-  font-size: 1.45rem;
-  color: #175cd3;
-  font-weight: 600;
-  margin-bottom: 1.2rem;
-  margin-top: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1.6rem !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5) !important;
 }
+
 .datos-basicos-section {
-  font-size: 1.01rem;
-  font-weight: 600;
-  color: #1274e7;
-  margin-bottom: 0.5rem;
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  color: #ffffff !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  margin: 1.2rem 0 0.8rem !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+  padding-bottom: 0.4rem !important;
 }
-.datos-basicos-messages .alert {
-  font-size: 0.97rem;
-  padding: 0.4rem 1rem;
+
+/* Labels */
+.form-label, label {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-bottom: 0.3rem !important;
 }
-.btn-primary {
-  background: #1274e7;
-  border: none;
-  color: #fff;
-  font-weight: 500;
-  border-radius: 0.45rem;
-  padding: 0.38rem 1.6rem;
-  transition: background 0.2s;
+
+/* Inputs */
+.form-control,
+.form-select {
+  border-radius: 0.7rem !important;
+  font-size: 0.95rem !important;
+  background: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  transition: all 0.3s ease !important;
 }
-.btn-primary:hover, .btn-primary:focus {
-  background: #0c56a5;
-  color: #fff;
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #96ac60 !important;
+  box-shadow: 0 0 0 2px rgba(150,172,96,0.3) !important;
+  background: rgba(255,255,255,0.15) !important;
+  color: #fff !important;
 }
-.form-label {
-  font-weight: 500;
-  color: #364764;
+
+.form-control::placeholder {
+  color: rgba(255,255,255,0.6) !important;
 }
-.bg-light {
-  background: #f2f6fb !important;
+
+/* Botón Guardar */
+.perfil-btn-guardar {
+  background: linear-gradient(135deg, #96ac60 0%, #7a9449 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  padding: 0.7rem 1.5rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.perfil-btn-guardar:hover {
+  background: linear-gradient(135deg, #a8be6c 0%, #8aa055 100%) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Animación */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Estilos para selects (desplegables) ===== */
+.form-select {
+  background: rgba(40, 62, 6, 0.4) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 0.7rem !important;
+  padding: 0.5rem 1rem !important;
+  appearance: none !important; /* quita flecha default */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6 6 6-6'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 1rem center !important;
+  background-size: 1rem !important;
+}
+
+.form-select option {
+  background: rgba(40, 62, 6, 0.95) !important;
+  color: #ffffff !important;
+}
+
+.form-select:focus {
+  border-color: #96ac60 !important;
+  box-shadow: 0 0 0 2px rgba(150,172,96,0.3) !important;
 }

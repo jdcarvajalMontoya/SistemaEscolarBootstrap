@@ -1,22 +1,105 @@
+/* =========================================================
+   USUARIOS PENDIENTES — Glassmorphism Verde
+   ========================================================= */
+
+/* Quitar fondo blanco de Bootstrap en .card */
 .card {
-  border-radius: 1.2rem !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
+
+/* ===== Card Body ===== */
+.card .card-body,
+.card-body {
+  position: relative !important;
+  background: rgba(40, 62, 6, 0.25) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(150, 172, 96, 0.3) !important;
+  box-shadow: 
+    0 8px 32px 0 rgba(40, 62, 6, 0.37),
+    inset 0 1px 0 rgba(150, 172, 96, 0.15),
+    0 0 0 1px rgba(150, 172, 96, 0.2) !important;
+  padding: 2rem !important;
+  animation: fadeInUp 0.6s ease-out !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Hover card */
+.card .card-body:hover,
+.card-body:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    0 12px 40px 0 rgba(31, 38, 135, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ===== Títulos ===== */
+.card-body h2 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+  margin-bottom: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+/* ===== List Group transparente ===== */
 .list-group-item {
-  border: none;
-  border-bottom: 1px solid #f3f3f3;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+  margin-bottom: 0.5rem !important;
+  transition: background 0.3s ease !important;
 }
-.btn-success.btn-sm {
-  font-size: 1rem !important;
-  font-weight: 500 !important;
-  padding: 0.35rem 0.9rem !important;
-  border-radius: 0.5rem !important;
-  box-shadow: 0 1px 4px rgba(8,96,168,.06);
+
+.list-group-item:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(5px) !important;
 }
-.btn-success.btn-sm i {
-  font-size: 1.2em;
-  vertical-align: middle;
+
+/* Texto */
+.list-group-item .fw-semibold {
+  color: #ffffff !important;
 }
-.toast {
-  font-size: 1rem;
-  border-radius: 1rem;
+.list-group-item .text-secondary {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ===== Botón Activar ===== */
+.btn-success {
+  background: rgba(40, 167, 69, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #fff !important;
+  transition: all 0.3s ease !important;
+}
+.btn-success:hover {
+  background: rgba(25, 135, 84, 1) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(25, 135, 84, 0.5) !important;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .card .card-body {
+    padding: 1.5rem !important;
+    border-radius: 15px !important;
+  }
+}
+@media (max-width: 480px) {
+  .card .card-body {
+    padding: 1rem !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* ===== Animación ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card-body {
+  animation: fadeInUp 0.6s ease-out !important;
 }

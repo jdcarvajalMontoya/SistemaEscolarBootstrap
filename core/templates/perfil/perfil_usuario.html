@@ -1,208 +1,170 @@
 {% extends base_template %}
 {% load static widget_tweaks %}
 
+{% block extra_head %}
+  <link rel="stylesheet" href="{% static 'css/perfil_usuario.css' %}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
 {% block panel_content %}
-<style>
-  .perfil-card-title {
-    color: #1465c0;
-    font-weight: 700;
-    font-size: 1.18rem;
-    margin-bottom: 0.6rem;
-    letter-spacing: 0.3px;
-  }
-  .perfil-divider {
-    border-top: 1px solid #f0f4fa;
-    margin: 0.5rem 0 0.6rem 0;
-  }
-  .perfil-label {
-    color: #6c7a92;
-    font-weight: 600;
-    min-width: 138px;
-    font-size: 0.97rem;
-  }
-  .perfil-value {
-    color: #223356;
-    font-weight: 500;
-    font-size: 0.96rem;
-    word-break: break-word;
-  }
-  .perfil-datos .row {
-    margin-bottom: 0.15rem;
-  }
-  .perfil-avatar {
-    width: 95px;
-    height: 95px;
-    object-fit: cover;
-    border-radius: 1rem;
-    border: 2px solid #e3e9f6;
-    background: #f4f8fd;
-    box-shadow: 0 3px 12px #e8eef7;
-    display: block;
-    margin: 0 auto;
-  }
-  .perfil-btn-editar {
-    background: #eaf4fb;
-    color: #0574c7;
-    border-radius: 0.5rem;
-    border: 1px solid #b6e0fe;
-    font-weight: 600;
-    padding: 0.35rem 1.1rem;
-    font-size: 0.96rem;
-    box-shadow: 0 2px 8px #eaf4fb90;
-    transition: background .18s, color .18s;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .perfil-btn-editar:hover,
-  .perfil-btn-editar:focus {
-    background: #cbe7fb;
-    color: #035485;
-    text-decoration: none;
-  }
-  @media (max-width: 767px) {
-    .perfil-card-body {
-      flex-direction: column !important;
-      align-items: stretch !important;
-    }
-    .perfil-datos {
-      margin-top: 1rem;
-    }
-  }
-</style>
-
-<div class="container-fluid px-0" style="max-width: 820px;">
+<div class="container-fluid px-0" style="max-width: 900px; margin: 0 auto;">
   <div class="card shadow rounded-4 border-0 mt-4">
-    <div class="card-body perfil-card-body d-flex flex-row align-items-start gap-4" style="padding: 1.2rem 1.3rem;">
+    <div class="card-body profile-container">
 
-      <!-- Foto de perfil -->
-      <div class="text-center flex-shrink-0">
-        {% if perfil and perfil.foto %}
-          <img src="{{ perfil.foto.url }}" alt="Foto de perfil" class="perfil-avatar mb-1">
-        {% else %}
-          <div class="perfil-avatar mb-1 d-flex align-items-center justify-content-center" style="background:#e3e8ef;">
-            <span class="text-secondary" style="font-size:1.4rem;">👤</span>
-          </div>
-        {% endif %}
-        <div class="text-secondary small mt-1" style="letter-spacing:0.01em;">
-          {{ usuario.rol.nombre }}
-        </div>
-      </div>
-
-      <!-- Datos -->
-      <div class="perfil-datos flex-grow-1">
-        <div class="perfil-card-title">Perfil de Usuario</div>
-
-        <div class="row mb-0">
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Correo:</span>
-            <span class="perfil-value ms-1">{{ usuario.email }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Fecha de creación:</span>
-            <span class="perfil-value ms-1">
-              {{ usuario.date_joined|date:"j \\d\\e F \\d\\e Y, g:i a" }}
-            </span>
-          </div>
-        </div>
-
-        <div class="perfil-divider"></div>
-
-        {% if perfil %}
-        <div class="row mb-0">
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Primer nombre:</span>
-            <span class="perfil-value ms-1">{{ perfil.primer_nombre }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Segundo nombre:</span>
-            <span class="perfil-value ms-1">{{ perfil.segundo_nombre|default_if_none:"" }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Primer apellido:</span>
-            <span class="perfil-value ms-1">{{ perfil.primer_apellido }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Segundo apellido:</span>
-            <span class="perfil-value ms-1">{{ perfil.segundo_apellido|default_if_none:"" }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Tipo de documento:</span>
-            <span class="perfil-value ms-1">{{ usuario.tipo_documento }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Número de documento:</span>
-            <span class="perfil-value ms-1">{{ usuario.numero_documento }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Municipio de expedición:</span>
-            <span class="perfil-value ms-1">
-              {% if usuario.municipio_identificacion %}
-                {{ usuario.municipio_identificacion.nombre }}
+      <!-- Header del Perfil -->
+      <div class="profile-header mb-4">
+        <div class="row align-items-center">
+          <div class="col-md-4 text-center">
+            <div class="avatar-section">
+              {% if perfil and perfil.foto %}
+                <img src="{{ perfil.foto.url }}" alt="Foto de perfil" class="profile-avatar">
               {% else %}
-                <span class="text-muted">No especificado</span>
+                <div class="profile-avatar avatar-placeholder">
+                  <i class="fas fa-user"></i>
+                </div>
               {% endif %}
-            </span>
-          </div>
-        </div>
-
-        <div class="perfil-divider"></div>
-
-        <div class="row mb-0">
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Dirección línea 1:</span>
-            <span class="perfil-value ms-1">{{ perfil.direccion_linea1 }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Dirección línea 2:</span>
-            <span class="perfil-value ms-1">{{ perfil.direccion_linea2|default_if_none:"" }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Ciudad:</span>
-            <span class="perfil-value ms-1">{{ perfil.ciudad.nombre }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">Departamento / Estado:</span>
-            <span class="perfil-value ms-1">{{ perfil.ciudad.departamento.nombre }}</span>
-          </div>
-          <div class="col-12 col-md-6 mb-1">
-            <span class="perfil-label">País:</span>
-            <span class="perfil-value ms-1">{{ perfil.ciudad.departamento.pais.nombre }}</span>
-          </div>
-        </div>
-        {% else %}
-          <div class="alert alert-warning mt-2 mb-2 py-1">
-            Este usuario no tiene un perfil creado.
-          </div>
-          <div class="row g-3 mb-2">
-            <div class="col-12 col-md-4 mb-2">
-              <div class="perfil-label mb-1">Tipo de documento:</div>
-              <div class="perfil-value">{{ usuario.tipo_documento|default:"No especificado" }}</div>
-            </div>
-            <div class="col-12 col-md-4 mb-2">
-              <div class="perfil-label mb-1">Número de documento:</div>
-              <div class="perfil-value">{{ usuario.numero_documento|default:"No especificado" }}</div>
-            </div>
-            <div class="col-12 col-md-4 mb-2">
-              <div class="perfil-label mb-1">Municipio de expedición:</div>
-              <div class="perfil-value">
-                {% if usuario.municipio_identificacion %}
-                  {{ usuario.municipio_identificacion.nombre }}<br>
-                  {{ usuario.municipio_identificacion.departamento.nombre }}<br>
-                  {{ usuario.municipio_identificacion.departamento.pais.nombre }}
-                {% else %}
-                  <span class="text-muted">No especificado</span>
-                {% endif %}
+              <div class="role-badge">
+                <i class="fas fa-shield-alt me-1"></i>{{ usuario.rol.nombre }}
               </div>
             </div>
           </div>
-        {% endif %}
-
-        <div class="mt-3">
-          <a href="{% url 'editar_perfil' %}" class="perfil-btn-editar">
-            Editar Perfil
-          </a>
+          <div class="col-md-8">
+            <h1 class="profile-title">
+              <i class="fas fa-user-circle me-2"></i>Perfil de Usuario
+            </h1>
+            <div class="profile-subtitle">
+              Información personal y datos de contacto
+            </div>
+            <div class="profile-meta">
+              <span class="meta-item">
+                <i class="fas fa-envelope me-1"></i>{{ usuario.email }}
+              </span>
+              <span class="meta-item">
+                <i class="fas fa-calendar-alt me-1"></i>
+                Registrado el {{ usuario.date_joined|date:"j \\d\\e F \\d\\e Y" }}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
+
+      {% if perfil %}
+      <!-- Información Personal -->
+      <div class="info-card mb-3">
+        <h3 class="card-section-title"><i class="fas fa-id-card me-2"></i>Información Personal</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="info-group">
+              <label><i class="fas fa-user me-1"></i>Primer nombre</label>
+              <span>{{ perfil.primer_nombre }}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-group">
+              <label><i class="fas fa-user me-1"></i>Segundo nombre</label>
+              <span>{{ perfil.segundo_nombre|default_if_none:"No especificado" }}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-group">
+              <label><i class="fas fa-user-tag me-1"></i>Primer apellido</label>
+              <span>{{ perfil.primer_apellido }}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-group">
+              <label><i class="fas fa-user-tag me-1"></i>Segundo apellido</label>
+              <span>{{ perfil.segundo_apellido|default_if_none:"No especificado" }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documentación -->
+      <div class="info-card mb-3">
+        <h3 class="card-section-title"><i class="fas fa-file-alt me-2"></i>Documentación</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="info-group">
+              <label><i class="fas fa-id-card-alt me-1"></i>Tipo de documento</label>
+              <span>{{ usuario.tipo_documento }}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-group">
+              <label><i class="fas fa-hashtag me-1"></i>Número de documento</label>
+              <span>{{ usuario.numero_documento }}</span>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="info-group">
+              <label><i class="fas fa-map-marker-alt me-1"></i>Municipio de expedición</label>
+              <span>
+                {% if usuario.municipio_identificacion %}
+                  {{ usuario.municipio_identificacion.nombre }}
+                {% else %}
+                  <span class="text-muted">No especificado</span>
+                {% endif %}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ubicación -->
+      <div class="info-card mb-3">
+        <h3 class="card-section-title"><i class="fas fa-home me-2"></i>Ubicación</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="info-group">
+              <label><i class="fas fa-road me-1"></i>Dirección línea 1</label>
+              <span>{{ perfil.direccion_linea1 }}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-group">
+              <label><i class="fas fa-road me-1"></i>Dirección línea 2</label>
+              <span>{{ perfil.direccion_linea2|default_if_none:"No especificado" }}</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-group">
+              <label><i class="fas fa-city me-1"></i>Ciudad</label>
+              <span>{{ perfil.ciudad.nombre }}</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-group">
+              <label><i class="fas fa-map me-1"></i>Departamento</label>
+              <span>{{ perfil.ciudad.departamento.nombre }}</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-group">
+              <label><i class="fas fa-flag me-1"></i>País</label>
+              <span>{{ perfil.ciudad.departamento.pais.nombre }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <!-- Sin Perfil -->
+      <div class="info-card no-profile text-center">
+        <div class="no-profile-icon mb-2">
+          <i class="fas fa-user-slash"></i>
+        </div>
+        <h3>Sin Perfil Configurado</h3>
+        <p>Este usuario no tiene un perfil creado. Crea uno para completar tu información.</p>
+      </div>
+      {% endif %}
+
+      <!-- Acciones -->
+      <div class="actions-section mt-3">
+        <a href="{% url 'editar_perfil' %}" class="perfil-btn-editar">
+          <i class="fas fa-edit me-2"></i>Editar Perfil
+        </a>
+      </div>
+
     </div>
   </div>
 </div>

@@ -4,164 +4,166 @@
 
 {% block title %}Datos Básicos del Docente{% endblock %}
 
+{% block extra_head %}
+  <link rel="stylesheet" href="{% static 'css/datos_basicos_docente.css' %}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
 {% block panel_content %}
-<link rel="stylesheet" href="{% static 'css/datos_basicos_docente.css' %}">
-<div class="datos-basicos-container">
-  <div class="datos-basicos-card">
-    <h1 class="datos-basicos-title">
-      <i class="bi bi-person-badge"></i> Datos Básicos del Docente
-    </h1>
+<div class="container-fluid px-0" style="max-width: 900px; margin: 0 auto;">
+  <div class="card datos-basicos-card mt-4">
+    <div class="card-body">
+      <h1 class="datos-basicos-title mb-4">
+        <i class="bi bi-person-badge me-2"></i> Datos Básicos del Docente
+      </h1>
 
-    {% if messages %}
-      <div class="datos-basicos-messages">
-        {% for message in messages %}
-          <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% else %}alert-info{% endif %}" role="alert">
-            {{ message }}
+      {% if messages %}
+        <div class="datos-basicos-messages mb-3">
+          {% for message in messages %}
+            <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% else %}alert-info{% endif %} py-2 px-3 rounded-3">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <form method="post" autocomplete="off" novalidate>
+        {% csrf_token %}
+
+        <!-- Identificación -->
+        <h2 class="datos-basicos-section"><i class="bi bi-credit-card-2-front me-2"></i> Datos de Identificación</h2>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            {{ form_identificacion.tipo_documento.label_tag }}
+            {{ form_identificacion.tipo_documento|add_class:"form-select" }}
           </div>
-        {% endfor %}
-      </div>
-    {% endif %}
+          <div class="col-md-6">
+            {{ form_identificacion.numero_documento.label_tag }}
+            {{ form_identificacion.numero_documento|add_class:"form-control" }}
+          </div>
+          <div class="col-12 mt-3">
+            {{ form_identificacion.municipio_identificacion.label_tag }}
+            {{ form_identificacion.municipio_identificacion|add_class:"form-select" }}
+          </div>
+        </div>
 
-    <form method="post" autocomplete="off" novalidate>
-      {% csrf_token %}
+        <!-- Identidad -->
+        <h2 class="datos-basicos-section"><i class="bi bi-person me-2"></i> Identidad</h2>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            {{ form_identidad.primer_nombre.label_tag }}
+            {{ form_identidad.primer_nombre|add_class:"form-control" }}
+          </div>
+          <div class="col-md-6">
+            {{ form_identidad.segundo_nombre.label_tag }}
+            {{ form_identidad.segundo_nombre|add_class:"form-control" }}
+          </div>
+          <div class="col-md-6 mt-3">
+            {{ form_identidad.primer_apellido.label_tag }}
+            {{ form_identidad.primer_apellido|add_class:"form-control" }}
+          </div>
+          <div class="col-md-6 mt-3">
+            {{ form_identidad.segundo_apellido.label_tag }}
+            {{ form_identidad.segundo_apellido|add_class:"form-control" }}
+          </div>
+        </div>
 
-      <!-- Identificación -->
-      <h2 class="datos-basicos-section"><i class="bi bi-credit-card-2-front"></i> Datos de Identificación</h2>
-      {{ form_identificacion.non_field_errors }}
-      <div class="row mb-3">
-        <div class="col-md-6 mb-3 mb-md-0">
-          {{ form_identificacion.tipo_documento.label_tag }}
-          {{ form_identificacion.tipo_documento|add_class:"form-select" }}
-          {{ form_identificacion.tipo_documento.errors }}
+        <!-- Nacimiento -->
+        <h2 class="datos-basicos-section"><i class="bi bi-cake2 me-2"></i> Nacimiento</h2>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            {{ form_basico.fecha_nacimiento.label_tag }}
+            {{ form_basico.fecha_nacimiento|add_class:"form-control" }}
+          </div>
+          <div class="col-md-4">
+            <label for="edad" class="form-label">Edad</label>
+            <input type="text" id="edad" name="edad" readonly class="form-control bg-light" />
+          </div>
+          <div class="col-md-4">
+            {{ form_basico.genero.label_tag }}
+            {{ form_basico.genero|add_class:"form-select" }}
+          </div>
         </div>
-        <div class="col-md-6">
-          {{ form_identificacion.numero_documento.label_tag }}
-          {{ form_identificacion.numero_documento|add_class:"form-control" }}
-          {{ form_identificacion.numero_documento.errors }}
-        </div>
-        <div class="col-12 mt-3">
-          {{ form_identificacion.municipio_identificacion.label_tag }}
-          {{ form_identificacion.municipio_identificacion|add_class:"form-select" }}
-          {{ form_identificacion.municipio_identificacion.errors }}
-        </div>
-      </div>
 
-      <!-- Identidad -->
-      <h2 class="datos-basicos-section"><i class="bi bi-person"></i> Identidad</h2>
-      <div class="row mb-3">
-        <div class="col-md-6 mb-3 mb-md-0">
-          {{ form_identidad.primer_nombre.label_tag }}
-          {{ form_identidad.primer_nombre|add_class:"form-control" }}
+        <!-- Domicilio -->
+        <h2 class="datos-basicos-section"><i class="bi bi-house me-2"></i> Domicilio</h2>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            {{ form_basico.pais_residencia.label_tag }}
+            {{ form_basico.pais_residencia|add_class:"form-select" }}
+          </div>
+          <div class="col-md-4">
+            {{ form_basico.departamento_residencia.label_tag }}
+            {{ form_basico.departamento_residencia|add_class:"form-select" }}
+          </div>
+          <div class="col-md-4">
+            {{ form_basico.municipio_residencia.label_tag }}
+            {{ form_basico.municipio_residencia|add_class:"form-select" }}
+          </div>
         </div>
-        <div class="col-md-6">
-          {{ form_identidad.segundo_nombre.label_tag }}
-          {{ form_identidad.segundo_nombre|add_class:"form-control" }}
+        <div class="row mb-3">
+          <div class="col-md-6">
+            {{ form_basico.direccion_linea1.label_tag }}
+            {{ form_basico.direccion_linea1|add_class:"form-control" }}
+          </div>
+          <div class="col-md-6">
+            {{ form_basico.direccion_linea2.label_tag }}
+            {{ form_basico.direccion_linea2|add_class:"form-control" }}
+          </div>
         </div>
-        <div class="col-md-6 mt-3">
-          {{ form_identidad.primer_apellido.label_tag }}
-          {{ form_identidad.primer_apellido|add_class:"form-control" }}
+        <div class="row mb-3">
+          <div class="col-md-6">
+            {{ form_basico.estrato.label_tag }}
+            {{ form_basico.estrato|add_class:"form-select" }}
+          </div>
         </div>
-        <div class="col-md-6 mt-3">
-          {{ form_identidad.segundo_apellido.label_tag }}
-          {{ form_identidad.segundo_apellido|add_class:"form-control" }}
-        </div>
-      </div>
 
-      <!-- Nacimiento -->
-      <h2 class="datos-basicos-section"><i class="bi bi-cake2"></i> Nacimiento</h2>
-      <div class="row mb-3">
-        <div class="col-md-4">
-          {{ form_basico.fecha_nacimiento.label_tag }}
-          {{ form_basico.fecha_nacimiento|add_class:"form-control" }}
+        <!-- Contacto -->
+        <h2 class="datos-basicos-section"><i class="bi bi-telephone me-2"></i> Datos de Contacto</h2>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            {{ form_basico.telefono_celular.label_tag }}
+            {{ form_basico.telefono_celular|add_class:"form-control" }}
+          </div>
+          <div class="col-md-6">
+            {{ form_basico.telefono_celular_alterno.label_tag }}
+            {{ form_basico.telefono_celular_alterno|add_class:"form-control" }}
+          </div>
         </div>
-        <div class="col-md-4">
-          <label for="edad" class="form-label">Edad</label>
-          <input type="text" id="edad" name="edad" readonly class="form-control bg-light" />
+        <div class="row mb-3">
+          <div class="col-md-6">
+            {{ form_basico.telefono_fijo.label_tag }}
+            {{ form_basico.telefono_fijo|add_class:"form-control" }}
+          </div>
+          <div class="col-md-6">
+            {{ form_basico.telefono_fijo_ext.label_tag }}
+            {{ form_basico.telefono_fijo_ext|add_class:"form-control" }}
+          </div>
         </div>
-        <div class="col-md-4">
-          {{ form_basico.genero.label_tag }}
-          {{ form_basico.genero|add_class:"form-select" }}
+        <div class="row mb-3">
+          <div class="col-md-6">
+            {{ form_basico.correo_alterno.label_tag }}
+            {{ form_basico.correo_alterno|add_class:"form-control" }}
+          </div>
         </div>
-      </div>
 
-      <!-- Domicilio -->
-      <h2 class="datos-basicos-section"><i class="bi bi-house"></i> Domicilio</h2>
-      <div class="row mb-3">
-        <div class="col-md-4">
-          {{ form_basico.pais_residencia.label_tag }}
-          {{ form_basico.pais_residencia|add_class:"form-select" }}
+        <!-- Perfil Ocupacional -->
+        <h2 class="datos-basicos-section"><i class="bi bi-award me-2"></i> Perfil Ocupacional</h2>
+        <div class="row mb-3">
+          <div class="col-12">
+            {{ form_basico.resumen.label_tag }}
+            {{ form_basico.resumen|add_class:"form-control" }}
+          </div>
         </div>
-        <div class="col-md-4">
-          {{ form_basico.departamento_residencia.label_tag }}
-          {{ form_basico.departamento_residencia|add_class:"form-select" }}
-        </div>
-        <div class="col-md-4">
-          {{ form_basico.municipio_residencia.label_tag }}
-          {{ form_basico.municipio_residencia|add_class:"form-select" }}
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          {{ form_basico.direccion_linea1.label_tag }}
-          {{ form_basico.direccion_linea1|add_class:"form-control" }}
-        </div>
-        <div class="col-md-6">
-          {{ form_basico.direccion_linea2.label_tag }}
-          {{ form_basico.direccion_linea2|add_class:"form-control" }}
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          {{ form_basico.estrato.label_tag }}
-          {{ form_basico.estrato|add_class:"form-select" }}
-        </div>
-      </div>
 
-      <!-- Datos de Contacto -->
-      <h2 class="datos-basicos-section"><i class="bi bi-telephone"></i> Datos de Contacto</h2>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          {{ form_basico.telefono_celular.label_tag }}
-          {{ form_basico.telefono_celular|add_class:"form-control" }}
+        <!-- Botón -->
+        <div class="mt-4 text-end">
+          <button type="submit" class="perfil-btn-guardar">
+            <i class="bi bi-save me-1"></i> Guardar
+          </button>
         </div>
-        <div class="col-md-6">
-          {{ form_basico.telefono_celular_alterno.label_tag }}
-          {{ form_basico.telefono_celular_alterno|add_class:"form-control" }}
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          {{ form_basico.telefono_fijo.label_tag }}
-          {{ form_basico.telefono_fijo|add_class:"form-control" }}
-        </div>
-        <div class="col-md-6">
-          {{ form_basico.telefono_fijo_ext.label_tag }}
-          {{ form_basico.telefono_fijo_ext|add_class:"form-control" }}
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          {{ form_basico.correo_alterno.label_tag }}
-          {{ form_basico.correo_alterno|add_class:"form-control" }}
-        </div>
-      </div>
-
-      <!-- Perfil Ocupacional -->
-      <h2 class="datos-basicos-section"><i class="bi bi-award"></i> Perfil Ocupacional</h2>
-      <div class="row mb-3">
-        <div class="col-12">
-          {{ form_basico.resumen.label_tag }}
-          {{ form_basico.resumen|add_class:"form-control" }}
-        </div>
-      </div>
-
-      <!-- Botón Guardar -->
-      <div class="mt-4 text-end">
-        <button type="submit" class="btn btn-primary px-4">
-          <i class="bi bi-save"></i> Guardar
-        </button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
 <script src="{% static 'js/datos_basicos_docente.js' %}"></script>

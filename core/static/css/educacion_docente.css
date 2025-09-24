@@ -1,14 +1,166 @@
-/* educacion_docente.css */
-.educacion-docente-box {
-    background: #fafdff;
-    border-radius: 1.5rem;
-    box-shadow: 0 4px 18px rgba(0,80,200,0.07);
-    padding: 2rem;
-    margin: 2rem auto;
-    max-width: 700px;
+/* =========================================================
+   EDUCACIÓN DOCENTE — Glassmorphism Verde Mejorado
+   ========================================================= */
+
+/* Contenedor general centrado y con ancho limitado */
+.glass-container {
+  border-radius: 20px !important;
+  background: rgba(40, 62, 6, 0.5) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border: 1px solid rgba(150, 172, 96, 0.4) !important;
+  box-shadow:
+    0 8px 32px rgba(40, 62, 6, 0.4),
+    inset 0 1px 0 rgba(150, 172, 96, 0.2),
+    0 0 0 1px rgba(150, 172, 96, 0.15) !important;
+  padding: 2.5rem !important;
+  width: 100% !important;
+  max-width: 1200px !important;  /* 🔑 limite ancho */
+  margin: 0 auto !important;     /* 🔑 centrado */
 }
-.educacion-docente-box h1 {
-    color: #1565c0;
-    font-weight: 700;
-    font-size: 1.7rem;
+
+/* Distribución de tarjetas */
+.glass-container .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center !important; /* 🔑 centra las tarjetas */
+  gap: 2rem;
+}
+
+/* Tarjetas */
+.glass-card {
+  flex: 1 1 300px !important;
+  max-width: 350px !important;
+  border-radius: 18px !important;
+  background: rgba(40, 62, 6, 0.35) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(150, 172, 96, 0.4) !important;
+  box-shadow: 
+    0 6px 20px rgba(40, 62, 6, 0.45),
+    inset 0 1px 0 rgba(150, 172, 96, 0.2) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+.glass-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 
+    0 10px 30px rgba(40, 62, 6, 0.6),
+    inset 0 1px 0 rgba(150, 172, 96, 0.25) !important;
+}
+
+.glass-card-header {
+  background: rgba(150, 172, 96, 0.15) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+}
+
+/* Título principal */
+.educacion-title {
+  color: #ffffff !important;
+  font-size: 1.7rem !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5) !important;
+}
+
+/* Botón agregar */
+.btn-agregar {
+  background: linear-gradient(135deg, #96ac60 0%, #7a9449 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  padding: 0.6rem 1.3rem !important;
+  transition: all 0.3s ease !important;
+}
+.btn-agregar:hover {
+  background: linear-gradient(135deg, #a8be6c 0%, #8aa055 100%) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Botones footer */
+.btn-editar, .btn-eliminar {
+  flex: 1 !important;
+  border-radius: 10px !important;
+  padding: 0.4rem 0.8rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-editar {
+  background: rgba(255,255,255,0.1) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(150,172,96,0.3) !important;
+}
+.btn-editar:hover {
+  background: rgba(255,255,255,0.2) !important;
+}
+
+.btn-eliminar {
+  background: rgba(255, 0, 0, 0.15) !important;
+  color: #ffb3b3 !important;
+  border: 1px solid rgba(255,0,0,0.3) !important;
+}
+.btn-eliminar:hover {
+  background: rgba(255, 0, 0, 0.3) !important;
+  color: #fff !important;
+}
+
+/* Modal */
+.glass-modal {
+  background: rgba(40, 62, 6, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-radius: 16px !important;
+  color: #fff !important;
+}
+.glass-modal .modal-header {
+  border-bottom: 1px solid rgba(255,255,255,0.15) !important;
+}
+.glass-modal .modal-footer {
+  border-top: 1px solid rgba(255,255,255,0.15) !important;
+}
+
+/* Formularios */
+.form-control,
+.form-select {
+  border-radius: 0.7rem !important;
+  background: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #96ac60 !important;
+  box-shadow: 0 0 0 2px rgba(150,172,96,0.3) !important;
+}
+
+/* Select options */
+.form-select option {
+  background: rgba(40,62,6,0.95) !important;
+  color: #fff !important;
+}
+
+/* Botón guardar/cancelar modal */
+.btn-guardar {
+  background: linear-gradient(135deg, #96ac60 0%, #7a9449 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 0.5rem 1.2rem !important;
+  font-weight: 600 !important;
+}
+.btn-guardar:hover {
+  background: linear-gradient(135deg, #a8be6c 0%, #8aa055 100%) !important;
+}
+.btn-cancelar {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  padding: 0.5rem 1.2rem !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+}
+.btn-cancelar:hover {
+  background: rgba(255,255,255,0.2) !important;
 }

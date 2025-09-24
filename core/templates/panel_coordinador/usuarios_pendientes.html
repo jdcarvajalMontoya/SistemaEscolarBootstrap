@@ -8,46 +8,48 @@
 {% endblock %}
 
 {% block panel_content %}
-<div class="card shadow-sm border-0 rounded-4 my-4">
-  <div class="card-body">
-    <h2 class="h4 text-primary fw-bold mb-4 d-flex align-items-center gap-2">
-      <span class="me-2"><i class="bi bi-hourglass-split"></i></span> Usuarios Pendientes de Activación
-    </h2>
+<div class="container-fluid px-0" style="max-width: 900px; margin: 0 auto;">
+  <div class="card shadow-sm border-0 rounded-4 my-4">
+    <div class="card-body">
+      <h2 class="h4 text-primary fw-bold mb-4 d-flex align-items-center gap-2">
+        <span class="me-2"><i class="bi bi-hourglass-split"></i></span> Usuarios Pendientes de Activación
+      </h2>
 
-    {% if pendientes %}
-      <ul class="list-group mb-0">
-        {% for usuario in pendientes %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <span class="fw-semibold">{{ usuario.correo }}</span><br>
-            <span class="text-secondary small">Rol: {{ usuario.rol.nombre }}</span>
-          </div>
-          <form method="post" action="{% url 'activar_usuario' usuario.id %}" class="form-activar-usuario" data-correo="{{ usuario.correo }}">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-success btn-sm rounded-3 shadow-none" aria-label="Activar cuenta de {{ usuario.correo }}">
-              <i class="bi bi-person-check me-1"></i> Activar
-            </button>
-          </form>
-        </li>
-        {% endfor %}
-      </ul>
-
-      <!-- Toast Bootstrap -->
-      <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
-        <div id="toast-exito" class="toast align-items-center text-bg-success border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="d-flex">
-            <div class="toast-body">
-              <i class="bi bi-check-circle me-2"></i>Usuario activado con éxito.
+      {% if pendientes %}
+        <ul class="list-group mb-0">
+          {% for usuario in pendientes %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <span class="fw-semibold">{{ usuario.correo }}</span><br>
+              <span class="text-secondary small">Rol: {{ usuario.rol.nombre }}</span>
             </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            <form method="post" action="{% url 'activar_usuario' usuario.id %}" class="form-activar-usuario" data-correo="{{ usuario.correo }}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success btn-sm rounded-3 shadow-none" aria-label="Activar cuenta de {{ usuario.correo }}">
+                <i class="bi bi-person-check me-1"></i> Activar
+              </button>
+            </form>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <!-- Toast Bootstrap -->
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
+          <div id="toast-exito" class="toast align-items-center text-bg-success border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                <i class="bi bi-check-circle me-2"></i>Usuario activado con éxito.
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
           </div>
         </div>
-      </div>
-    {% else %}
-      <p class="text-secondary text-center py-4 mb-0">
-        No hay usuarios pendientes por activar.
-      </p>
-    {% endif %}
+      {% else %}
+        <p class="text-secondary text-center py-4 mb-0">
+          No hay usuarios pendientes por activar.
+        </p>
+      {% endif %}
+    </div>
   </div>
 </div>
 {% endblock %}

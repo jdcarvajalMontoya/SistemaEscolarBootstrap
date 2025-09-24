@@ -1,0 +1,111 @@
+/* =========================================================
+   EDITAR PERFIL — Glassmorphism Verde Mejorado
+   ========================================================= */
+
+.form-card-profile {
+  border-radius: 20px !important;
+  border: 1px solid rgba(150, 172, 96, 0.4) !important;
+  background: rgba(40, 62, 6, 0.35) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow:
+    0 8px 32px rgba(40, 62, 6, 0.4),
+    inset 0 1px 0 rgba(150, 172, 96, 0.2),
+    0 0 0 1px rgba(150, 172, 96, 0.15) !important;
+  animation: fadeInUp 0.8s ease-out !important;
+}
+
+/* Título */
+.form-title {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4) !important;
+}
+
+/* Labels */
+.form-label {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-bottom: 0.3rem !important;
+}
+
+/* Inputs */
+.form-control,
+.form-select {
+  border-radius: 0.7rem !important;
+  font-size: 0.95rem !important;
+  background: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #96ac60 !important;
+  box-shadow: 0 0 0 2px rgba(150,172,96,0.3) !important;
+  background: rgba(255,255,255,0.15) !important;
+  color: #fff !important;
+}
+
+/* Placeholder */
+.form-control::placeholder {
+  color: rgba(255,255,255,0.6) !important;
+}
+
+/* Errores */
+.invalid-feedback {
+  font-size: 0.9rem !important;
+  color: #ffb3b3 !important;
+}
+
+/* Avatar preview */
+.form-avatar-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 1rem !important;
+  border: 2px solid rgba(255,255,255,0.3) !important;
+  background: rgba(255,255,255,0.1) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3) !important;
+  display: block;
+}
+
+/* Botones */
+.perfil-btn-guardar {
+  background: linear-gradient(135deg, #96ac60 0%, #7a9449 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  padding: 0.7rem 1.5rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.perfil-btn-guardar:hover {
+  background: linear-gradient(135deg, #a8be6c 0%, #8aa055 100%) !important;
+  transform: translateY(-2px) !important;
+}
+
+.perfil-btn-cancelar {
+  background: rgba(255, 0, 0, 0.1) !important;
+  color: #ff8080 !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255,0,0,0.3) !important;
+  font-weight: 600 !important;
+  padding: 0.7rem 1.5rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.perfil-btn-cancelar:hover {
+  background: rgba(255, 0, 0, 0.2) !important;
+  color: #fff !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

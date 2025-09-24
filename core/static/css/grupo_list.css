@@ -1,38 +1,194 @@
-.btn-pastel-blue {
+/* =========================================================
+   GRUPO LIST — Glassmorphism Verde con fix para .table-borderless
+   ========================================================= */
+
+/* Quitar fondo blanco de Bootstrap en .card */
+.card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ===== Card Body ===== */
+.card .card-body,
+.card-body {
+  position: relative !important;
+  background: rgba(40, 62, 6, 0.25) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(150, 172, 96, 0.3) !important;
+  box-shadow: 
+    0 8px 32px 0 rgba(40, 62, 6, 0.37),
+    inset 0 1px 0 rgba(150, 172, 96, 0.15),
+    0 0 0 1px rgba(150, 172, 96, 0.2) !important;
+  padding: 2rem !important;
+  margin: 1rem !important;
+  animation: fadeInUp 0.6s ease-out !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Hover card */
+.card .card-body:hover,
+.card-body:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    0 12px 40px 0 rgba(31, 38, 135, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ===== Títulos ===== */
+.card-body h2,
+.card-body .h4 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+  margin-bottom: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+/* ===== Tabla transparente ===== */
+.card-body .table {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Encabezado */
+.card-body .table-light,
+.card-body .table thead th {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3) !important;
+  font-weight: 700 !important;
+  padding: 1rem !important;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Filas */
+.card-body .table tbody tr {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: background 0.3s ease !important;
+}
+
+.card-body .table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+/* Celdas */
+.card-body .table td {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 1rem !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Texto corregido */
+.card-body .table .text-dark {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+.card-body .table .text-muted {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 500 !important;
+}
+
+/* ===== Botón Primary ===== */
+.card-body .btn-primary {
+  background: rgba(13, 110, 253, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease !important;
+}
+.card-body .btn-primary:hover {
+  background: rgba(13, 110, 253, 1) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.4) !important;
+}
+
+/* ===== Botones Pastel ===== */
+.card-body .btn-pastel-blue {
   background: #eaf4fb !important;
   color: #0574c7 !important;
-  border-radius: 0.5rem !important;
   border: 1px solid #b6e0fe !important;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.3s ease !important;
+  border-radius: 0.5rem !important;
   font-weight: 500 !important;
   padding: 0.35rem 0.9rem !important;
   font-size: 1rem !important;
 }
-.btn-pastel-blue:hover, .btn-pastel-blue:focus {
+.card-body .btn-pastel-blue:hover {
   background: #cbe7fb !important;
   color: #035485 !important;
+  transform: translateY(-1px) !important;
   text-decoration: none !important;
 }
-.btn-pastel-red {
+
+.card-body .btn-pastel-red {
   background: #fdeaea !important;
   color: #d71b3b !important;
-  border-radius: 0.5rem !important;
   border: 1px solid #ffd6da !important;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.3s ease !important;
+  border-radius: 0.5rem !important;
   font-weight: 500 !important;
   padding: 0.35rem 0.9rem !important;
   font-size: 1rem !important;
 }
-.btn-pastel-red:hover, .btn-pastel-red:focus {
+.card-body .btn-pastel-red:hover {
   background: #fbbfc1 !important;
   color: #98001b !important;
+  transform: translateY(-1px) !important;
   text-decoration: none !important;
 }
-.btn-pastel-blue, .btn-pastel-red {
-  margin-bottom: 0 !important;
-}
+
+/* Acciones en una sola línea */
 td.text-end.pe-4,
 .acciones-col {
-  white-space: nowrap;
-  min-width: 210px;
+  white-space: nowrap !important;
+  min-width: 210px !important;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .card .card-body,
+  .card-body {
+    margin: 0.5rem !important;
+    padding: 1.5rem !important;
+    border-radius: 15px !important;
+  }
+}
+@media (max-width: 480px) {
+  .card .card-body,
+  .card-body {
+    margin: 0.25rem !important;
+    padding: 1rem !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* ===== Animación ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card-body {
+  animation: fadeInUp 0.6s ease-out !important;
+}
+
+/* ===== FIX Bootstrap .table-borderless ===== */
+.card-body .table-borderless>:not(caption)>* {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+.card-body .table-borderless>:not(caption)>*>* {
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
